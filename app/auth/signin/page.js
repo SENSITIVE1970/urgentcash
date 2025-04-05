@@ -1,5 +1,7 @@
+import { signIn } from "@/auth";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa6";
+
 
 export default function Auth () {
     return (
@@ -8,7 +10,12 @@ export default function Auth () {
                 <div className="w-full md:w-[30em] rounded-md bg-white p-4">
                     <h1 className="text-2x1 mb-2">Sign into urgentCa$h</h1>
                     <p>Sign in Using .........</p>
-                    <form className="mb-2">
+                    <form 
+                    action={async () => {
+                        "use server"
+                        await signIn("google")
+                    }}
+                    className="mb-2">
                         <button className="w-full h-[3.2em] flex justify-center items-center gap-2 border-b-2
                         border-red-500 bg-black rounded-md">
                             <FaGoogle/>
